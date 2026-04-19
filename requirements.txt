@@ -1,0 +1,6 @@
+numpy
+pandas
+pyarrow
+pyproj
+scipy
+scikit-learn
