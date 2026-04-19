@@ -1,0 +1,3 @@
+Mechanism,Years,Bundle files,Mean annual bundle-days,Theil-Sen slope,Theil-Sen 95% low,Theil-Sen 95% high,Kendall tau,Kendall p
+Hot-Hot (top 3 bundles),2000-2024,"dates_hothot_bundle_1_E.Asia_and_E.Asia.csv; dates_hothot_bundle_2_(-85,19)_and_E.Asia.csv; dates_hothot_bundle_3_(10,20)_and_(104,8).csv",53.08,4.766666666666667,1.0,7.25,0.6980022974225852,1.1553715817472757e-06
+Seesaw (top 3 bundles),2000-2024,"dates_bundle_1_NorthAmerica_to_NorthAmerica.csv; dates_bundle_2_Europe_to_Europe.csv; dates_bundle_3_(52,31)_to_EastAsia.csv",25.36,1.7100840336134453,0.9375,2.7142857142857144,0.5652093652577146,9.125127883056595e-05

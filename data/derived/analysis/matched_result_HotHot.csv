@@ -1,0 +1,2 @@
+n_pairs,mean_delta,median_delta,boot95_mean_lo,boot95_mean_hi,wilcoxon_p_greater,network,tau_days,kind
+4377,0.5140429735183716,0.29888296127319336,0.47054570615291597,0.5576059341430664,1.3925727762245653e-118,HotHot,3,T

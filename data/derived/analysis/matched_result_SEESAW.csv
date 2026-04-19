@@ -1,0 +1,2 @@
+n_pairs,mean_delta,median_delta,boot95_mean_lo,boot95_mean_hi,wilcoxon_p_greater,network,tau_days,kind
+7282,0.028163639828562737,0.020860731601715088,-0.0018550136504927649,0.05786009309813379,0.04182957323538539,SEESAW,3,T

@@ -1,0 +1,15 @@
+data/derived/analysis/Supplementary_Table_5_Data.csv
+data/derived/analysis/Supplementary_Table_5_Fast_CorrectTotals_Uncertainty_TVPop.csv
+data/derived/analysis/Table5_Trends_Updated.csv
+data/derived/analysis/matched_pairs_HotHot.csv
+data/derived/analysis/matched_pairs_SEESAW.csv
+data/derived/analysis/matched_result_HotHot.csv
+data/derived/analysis/matched_result_SEESAW.csv
+data/derived/analysis/matched_strat_HotHot.csv
+data/derived/analysis/matched_strat_SEESAW.csv
+data/derived/bundle_dates/dates_bundle_1_NorthAmerica_to_NorthAmerica.csv
+data/derived/bundle_dates/dates_bundle_2_Europe_to_Europe.csv
+data/derived/bundle_dates/dates_bundle_3_(52,31)_to_EastAsia.csv
+data/derived/bundle_dates/dates_hothot_bundle_1_E.Asia_and_E.Asia.csv
+data/derived/bundle_dates/dates_hothot_bundle_2_(-85,19)_and_E.Asia.csv
+data/derived/bundle_dates/dates_hothot_bundle_3_(10,20)_and_(104,8).csv

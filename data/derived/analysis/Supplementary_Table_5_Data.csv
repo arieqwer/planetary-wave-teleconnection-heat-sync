@@ -1,0 +1,7 @@
+Event,Total Days,Pop Breakdown,Total Pop (Millions),Cumulative Exposure (Billion Person-Days)
+Hot-Hot 1 (East Asia Lock),465,East Asia (Regional): 1431.8 M,1431.8,665.79
+Hot-Hot 2 (Caribbean-Asia),405,Caribbean (Node A): 48.3 M | East Asia (Node B): 1431.8 M,1480.1,599.45
+Hot-Hot 3 (Sahel-Indochina),457,Sahel (Node A): 149.0 M | Indochina (Node B): 250.7 M,399.8,182.69
+Seesaw 1 (NA Dipole),382,West US (Cold/Trough): 81.9 M | East US (Hot/Ridge): 184.6 M,266.5,101.81
+Seesaw 2 (Euro Dipole),139,West Europe (Cold/Trough): 239.3 M | West Russia (Hot/Ridge): 65.5 M,304.8,42.37
+Seesaw 3 (Asia-Pac Dipole),113,Japan (Cold/Trough): 111.1 M | Pacific Ocean (Hot/Ridge): 0.0 M,111.1,12.55
