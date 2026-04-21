@@ -10,23 +10,15 @@ This is the trimmed public code-and-data release for the manuscript on synchroni
 2. `scripts/02_build_event_tables.py`
    Builds the hot-night and cold-night daily event tables from yearly ERA5 hourly parquet inputs.
 3. `scripts/03_build_synchrony_networks.py`
-   Builds the Hot-Hot and seesaw event-coincidence networks from the event tables.
+   Builds the coherent and dipole event-coincidence networks from the event tables.
 4. `scripts/04_prepare_release_outputs.py`
    Rebuilds the top-bundle date CSV files and the trend summary table used in the manuscript release package.
 
-## What stays on GitHub
+## What is on GitHub
 
 - the four scripts above
 - the repository-relative path helper in `src/urban_hot_night_sync/`
 - lightweight manuscript result files in `data/derived/`
-
-The exact GitHub data filenames are listed in `data/GITHUB_DATA_FILES.txt`.
-
-## What does not stay on GitHub
-
-Do not commit the heavy source or intermediate files directly to GitHub. Put them in Zenodo, Figshare, OSF, or another archive and link that archive from the manuscript.
-
-The required large files are summarized in `data/external/README.md`.
 
 ## Repository layout
 
@@ -36,12 +28,12 @@ The required large files are summarized in `data/external/README.md`.
 - `data/derived/bundle_dates/`: top-bundle event-day CSV files kept on GitHub
 - `data/external/`: placeholder for large archived inputs and outputs
 
-## Minimal GitHub data package
+## Data package
 
-This trimmed repository keeps only:
+This repository keeps:
 
-- top-3 Hot-Hot bundle date CSVs
-- top-3 seesaw bundle date CSVs
+- top-3 coherent bundle date CSVs
+- top-3 dipole bundle date CSVs
 - matched amplification summary outputs
 - Supplementary Table 5 exposure outputs
 - Table 5 trend summary
@@ -51,8 +43,3 @@ This trimmed repository keeps only:
 1. Create a Python environment from `requirements.txt`.
 2. Place the large external inputs described in `data/external/README.md` in your archive or local external-data directory.
 3. Run the workflow scripts from the repository root.
-
-## Notes
-
-- The GitHub release is intentionally narrower than the full private working directory.
-- Figure rendering scripts were removed because the release now prefers lightweight data products over plot-specific code clutter.
