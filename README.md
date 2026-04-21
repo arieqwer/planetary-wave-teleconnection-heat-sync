@@ -2,12 +2,6 @@
 
 This is the trimmed public code-and-data release for the manuscript on synchronized nocturnal urban heat extremes and planetary-wave locking. The repository now keeps only the core processing scripts plus the lightweight manuscript outputs that are appropriate to host on GitHub.
 
-The following were deliberately removed:
-
-- figure-by-figure notebooks
-- local-versus-Colab duplicates
-- exploratory scripts that only supported drafting or presentation graphics
-- bundle files beyond the top three hot-hot and top three seesaw cases used in the manuscript summaries
 
 ## Core workflow
 
