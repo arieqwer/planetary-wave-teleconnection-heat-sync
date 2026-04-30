@@ -1,4 +1,4 @@
-# Urban Hot Night Synchrony
+# Urban Hot Night Synchrony and Intensification
 
 This is the trimmed public code-and-data release for the manuscript on synchronized nocturnal urban heat extremes and planetary-wave locking. The repository now keeps only the core processing scripts plus the lightweight manuscript outputs that are appropriate to host on GitHub.
 
