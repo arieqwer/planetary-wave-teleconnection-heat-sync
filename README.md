@@ -22,10 +22,10 @@ This is the trimmed public code-and-data release for the manuscript on synchroni
 
 ## Repository layout
 
-- `scripts/`: the minimal integrated workflow
+- `scripts/`: the integrated workflow
 - `src/urban_hot_night_sync/`: repository path helper
-- `data/derived/analysis/`: lightweight summary tables kept on GitHub
-- `data/derived/bundle_dates/`: top-bundle event-day CSV files kept on GitHub
+- `data/derived/analysis/`: summary tables
+- `data/derived/bundle_dates/`: top-bundle event-day CSV files
 - `data/external/`: placeholder for large archived inputs and outputs
 
 ## Data package
@@ -41,5 +41,5 @@ This repository keeps:
 ## Quick start
 
 1. Create a Python environment from `requirements.txt`.
-2. Place the large external inputs described in `data/external/README.md` in your archive or local external-data directory.
+2. Place the large external inputs in archive or local external-data directory.
 3. Run the workflow scripts from the repository root.
