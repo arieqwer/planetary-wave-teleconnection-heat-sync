@@ -32,8 +32,8 @@ This is the trimmed public code-and-data release for the manuscript on synchroni
 
 This repository keeps:
 
-- top-3 coherent bundle date CSVs
-- top-3 dipole bundle date CSVs
+- top-3 coherent (hot-hot) bundle date CSVs
+- top-3 dipole (seesaw) bundle date CSVs
 - matched amplification summary outputs
 - Supplementary Table 5 exposure outputs
 - Table 5 trend summary
