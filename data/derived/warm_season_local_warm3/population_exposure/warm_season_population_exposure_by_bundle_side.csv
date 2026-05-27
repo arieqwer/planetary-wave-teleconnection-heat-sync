@@ -1,0 +1,13 @@
+mechanism,rank,bundle,side,side_label,node_count,population_2020,event_nights,static_2020_person_nights
+Coherent,1,C1 North America-Europe,side_a,Warm side A,117,667360.4699783174,114,76079093.57752818
+Coherent,1,C1 North America-Europe,side_b,Warm side B,139,1090955.4257346066,114,124368918.53374515
+Coherent,2,C2 North America-East Asia,side_a,Warm side A,115,788778.7751960871,101,79666656.2948048
+Coherent,2,C2 North America-East Asia,side_b,Warm side B,155,1821975.8681929803,101,184019562.687491
+Coherent,3,C3 Europe-East Asia,side_a,Warm side A,189,1838749.4217490128,66,121357461.83543484
+Coherent,3,C3 Europe-East Asia,side_b,Warm side B,136,1557032.9696992429,66,102764176.00015002
+Dipole,1,D1 East Asia-North America,hot_side,Hot side,686,5167123.865317493,46,237687697.80460468
+Dipole,1,D1 East Asia-North America,cool_side,Cool side,440,1826251.7339988232,46,84007579.76394586
+Dipole,2,D2 West/Central Asia-East Asia,hot_side,Hot side,778,5169206.699422457,26,134399374.18498388
+Dipole,2,D2 West/Central Asia-East Asia,cool_side,Cool side,414,4593769.6392277805,26,119438010.6199223
+Dipole,3,D3 North Atlantic-North America,hot_side,Hot side,562,1687848.7436933212,34,57386857.28557292
+Dipole,3,D3 North Atlantic-North America,cool_side,Cool side,321,1463099.9202805385,34,49745397.28953831

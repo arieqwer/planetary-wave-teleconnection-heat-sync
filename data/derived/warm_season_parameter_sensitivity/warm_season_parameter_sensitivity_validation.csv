@@ -1,0 +1,11 @@
+network_layer,sampled_edges,obs_mismatches,n_eff_mismatches,max_abs_lam_diff,max_abs_p_diff,duration_days,k_days
+Coherent,40,0,0,0.0,0.0,1,3
+Dipole,40,0,0,0.0,0.0,1,3
+Coherent,40,0,0,0.0,0.0,2,1
+Dipole,40,0,0,0.0,0.0,2,1
+Coherent,40,0,0,0.0,0.0,2,3
+Dipole,40,0,0,0.0,0.0,2,3
+Coherent,40,0,0,0.0,0.0,2,5
+Dipole,40,0,0,0.0,0.0,2,5
+Coherent,40,0,0,0.0,0.0,3,3
+Dipole,40,0,0,0.0,0.0,3,3

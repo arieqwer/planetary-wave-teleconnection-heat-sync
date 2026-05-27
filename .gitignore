@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+
+# Large or local-only data
+data/external/**
+!data/external/README.md
+data/derived/analysis/*.parquet
+data/derived/analysis/*.nc
+
+# Notebook noise
+*.log
+*.tmp
+.DS_Store

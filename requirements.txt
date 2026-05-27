@@ -1,0 +1,10 @@
+numpy
+numba
+pandas
+pyarrow
+pyproj
+scipy
+scikit-learn
+earthengine-api
+matplotlib
+xarray

@@ -1,0 +1,19 @@
+mechanism,rank,bundle,footprint,footprint_label,node_count,side_sum_node_count,population_year,population
+Coherent,1,C1 North America-Europe,bundle_union,Union of both paired sides,253,256,2020,1740579.095531905
+Coherent,1,C1 North America-Europe,side_a,Warm side A,117,117,2020,667360.4699783174
+Coherent,1,C1 North America-Europe,side_b,Warm side B,139,139,2020,1090955.4257346066
+Coherent,2,C2 North America-East Asia,bundle_union,Union of both paired sides,270,270,2020,2610754.643389069
+Coherent,2,C2 North America-East Asia,side_a,Warm side A,115,115,2020,788778.7751960871
+Coherent,2,C2 North America-East Asia,side_b,Warm side B,155,155,2020,1821975.8681929803
+Coherent,3,C3 Europe-East Asia,bundle_union,Union of both paired sides,323,325,2020,3333122.017277412
+Coherent,3,C3 Europe-East Asia,side_a,Warm side A,189,189,2020,1838749.4217490128
+Coherent,3,C3 Europe-East Asia,side_b,Warm side B,136,136,2020,1557032.9696992429
+Dipole,1,D1 East Asia-North America,bundle_union,Union of both paired sides,1126,1126,2020,6993375.5993163185
+Dipole,1,D1 East Asia-North America,hot_side,Hot side,686,686,2020,5167123.865317493
+Dipole,1,D1 East Asia-North America,cool_side,Cool side,440,440,2020,1826251.7339988232
+Dipole,2,D2 West/Central Asia-East Asia,bundle_union,Union of both paired sides,1068,1192,2020,8480732.271478945
+Dipole,2,D2 West/Central Asia-East Asia,hot_side,Hot side,778,778,2020,5169206.699422457
+Dipole,2,D2 West/Central Asia-East Asia,cool_side,Cool side,414,414,2020,4593769.6392277805
+Dipole,3,D3 North Atlantic-North America,bundle_union,Union of both paired sides,732,883,2020,2696944.4090048117
+Dipole,3,D3 North Atlantic-North America,hot_side,Hot side,562,562,2020,1687848.7436933212
+Dipole,3,D3 North Atlantic-North America,cool_side,Cool side,321,321,2020,1463099.9202805385

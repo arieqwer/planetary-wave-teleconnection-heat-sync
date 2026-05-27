@@ -1,0 +1,3 @@
+network_layer,candidate_edges_p_lt_0_005,total_pairwise_tests,bh_q,bh_retained_edges,bh_p_cutoff,bh_retained_long_range_edges_gt2500km,bh_retained_long_range_percent,bh_retained_median_distance_km
+Coherent,101348,3430890,0.05,80769,0.0011769605425444585,1168,1.4460993698077234,331.48877402527853
+Dipole,13194,6861780,0.05,81,5.940042949736934e-07,71,87.65432098765432,7263.0153860138425

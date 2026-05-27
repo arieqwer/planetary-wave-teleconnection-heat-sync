@@ -1,0 +1,11 @@
+{
+  "bundle_source": "data/derived/warm_season_local_warm3/warm_season_bundle_summary.csv",
+  "coherent_edges": "external archive: warm_season_local_warm3/ECA_edges_dyn_T2_a0.005_K3_tau015_local_warm3.parquet",
+  "dipole_edges": "external archive: warm_season_local_warm3/ECA_edges_SEESAW_T2_a0.005_K3_tau015_local_warm3.parquet",
+  "worldpop_collection": "WorldPop/GP/100m/pop",
+  "primary_population_year": 2020,
+  "grid_cell_half_width_degrees": 0.125,
+  "earth_engine_project": "ee-zuruyuyu",
+  "earth_engine_scale_m": 1000,
+  "notes": "Population is summed inside exact 0.25 degree grid-cell footprints for unique nodes in each corrected warm-season bundle. Exposure is reported as static 2020 WorldPop population multiplied by corrected warm-season event nights."
+}

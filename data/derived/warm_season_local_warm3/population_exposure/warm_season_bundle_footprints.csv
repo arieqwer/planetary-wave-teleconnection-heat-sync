@@ -1,0 +1,19 @@
+mechanism,rank,bundle,footprint,footprint_label,node_count,side_sum_node_count
+Coherent,1,C1 North America-Europe,bundle_union,Union of both paired sides,253,256
+Coherent,1,C1 North America-Europe,side_a,Warm side A,117,117
+Coherent,1,C1 North America-Europe,side_b,Warm side B,139,139
+Coherent,2,C2 North America-East Asia,bundle_union,Union of both paired sides,270,270
+Coherent,2,C2 North America-East Asia,side_a,Warm side A,115,115
+Coherent,2,C2 North America-East Asia,side_b,Warm side B,155,155
+Coherent,3,C3 Europe-East Asia,bundle_union,Union of both paired sides,323,325
+Coherent,3,C3 Europe-East Asia,side_a,Warm side A,189,189
+Coherent,3,C3 Europe-East Asia,side_b,Warm side B,136,136
+Dipole,1,D1 East Asia-North America,bundle_union,Union of both paired sides,1126,1126
+Dipole,1,D1 East Asia-North America,hot_side,Hot side,686,686
+Dipole,1,D1 East Asia-North America,cool_side,Cool side,440,440
+Dipole,2,D2 West/Central Asia-East Asia,bundle_union,Union of both paired sides,1068,1192
+Dipole,2,D2 West/Central Asia-East Asia,hot_side,Hot side,778,778
+Dipole,2,D2 West/Central Asia-East Asia,cool_side,Cool side,414,414
+Dipole,3,D3 North Atlantic-North America,bundle_union,Union of both paired sides,732,883
+Dipole,3,D3 North Atlantic-North America,hot_side,Hot side,562,562
+Dipole,3,D3 North Atlantic-North America,cool_side,Cool side,321,321

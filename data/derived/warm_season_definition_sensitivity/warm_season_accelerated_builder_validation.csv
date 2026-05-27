@@ -1,0 +1,5 @@
+warm_season,network,sampled_edges,obs_mismatches,n_eff_mismatches,max_abs_lam_diff,max_abs_p_diff
+local_warm4,Coherent,80,0,0,0.0,5.5077470362263625e-17
+local_warm4,Dipole,80,0,0,0.0,5.4643789493269423e-17
+local_warm6,Coherent,80,0,0,0.0,8.153200337090993e-17
+local_warm6,Dipole,80,0,0,0.0,5.551115123125783e-17

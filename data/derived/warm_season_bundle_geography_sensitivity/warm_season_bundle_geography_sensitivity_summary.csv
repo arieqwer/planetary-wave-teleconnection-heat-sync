@@ -1,0 +1,15 @@
+setting,network_layer,duration_days,k_days,alpha,total_long_range_edges,top3_edge_share,top3_matches_within_1500km,top3_matches_within_2500km,median_closest_primary_distance_km,top_corridors
+D=1,Coherent,1,3,0.005,22,0.9090909090909091,2,2,212.60618214541978,"N.America-Europe; N.America-Europe; (80,7)-(110,-8)"
+D=1,Dipole,1,3,0.005,484,0.768595041322314,0,2,2069.3538518940513,EastAsia to NorthAmerica; EastAsia to Europe; Europe to NorthAmerica
+K=1,Coherent,2,1,0.005,7129,0.7588722120914574,3,3,465.27894747942526,N.America-Europe; N.America-E.Asia; Europe-E.Asia
+K=1,Dipole,2,1,0.005,15430,0.6974724562540505,2,3,406.621397194814,"EastAsia to NorthAmerica; NorthAmerica to (56,40); Europe to EastAsia"
+p<0.001,Coherent,2,3,0.001,1077,0.8477251624883937,3,3,139.1967355424168,N.America-Europe; N.America-E.Asia; Europe-E.Asia
+p<0.001,Dipole,2,3,0.001,4473,0.7207690587972279,2,2,126.34982275014158,EastAsia to NorthAmerica; EastAsia to EastAsia; EastAsia to Europe
+Primary,Coherent,2,3,0.005,2403,0.8168955472326259,3,3,0.0,N.America-Europe; N.America-E.Asia; Europe-E.Asia
+Primary,Dipole,2,3,0.005,11439,0.7349418655476877,3,3,0.0,"EastAsia to NorthAmerica; EastAsia to EastAsia; NorthAmerica to (51,38)"
+p<0.01,Coherent,2,3,0.01,3684,0.8444625407166124,3,3,474.9476454597559,N.America-Europe; N.America-E.Asia; Europe-E.Asia
+p<0.01,Dipole,2,3,0.01,17781,0.666104268601316,2,2,908.6565765122773,"EastAsia to NorthAmerica; EastAsia to EastAsia; (-44,43) to NorthAmerica"
+K=5,Coherent,2,5,0.005,936,0.8258547008547008,2,3,788.3240744973587,N.America-Europe; N.America-E.Asia; Europe-E.Asia
+K=5,Dipole,2,5,0.005,8634,0.682302524901552,2,2,1278.626389015405,"EastAsia to NorthAmerica; (-23,44) to NorthAmerica; EastAsia to EastAsia"
+D=3,Coherent,3,3,0.005,13535,0.7759881787957148,3,3,552.2542729514225,N.America-E.Asia; Europe-E.Asia; N.America-Europe
+D=3,Dipole,3,3,0.005,35699,0.6824560912070367,2,3,1434.1536396300046,"EastAsia to NorthAmerica; NorthAmerica to (55,40); Europe to EastAsia"

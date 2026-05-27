@@ -1,0 +1,7 @@
+mechanism,rank,bundle,cluster_id,edge_count_recomputed,edge_count_expected,node_count_a_recomputed,node_count_a_expected,node_count_b_recomputed,node_count_b_expected,edge_count_match,node_count_a_match,node_count_b_match
+Coherent,1,C1 North America-Europe,2,1192,1192,117,117,139,139,True,True,True
+Coherent,2,C2 North America-East Asia,3,439,439,115,115,155,155,True,True,True
+Coherent,3,C3 Europe-East Asia,1,332,332,189,189,136,136,True,True,True
+Dipole,1,D1 East Asia-North America,0,3262,3262,686,686,440,440,True,True,True
+Dipole,2,D2 West/Central Asia-East Asia,2,2250,2250,778,778,414,414,True,True,True
+Dipole,3,D3 North Atlantic-North America,1,2149,2149,562,562,321,321,True,True,True
