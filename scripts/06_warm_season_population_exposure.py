@@ -451,7 +451,7 @@ def make_exposure_figure(bundle_summary: pd.DataFrame, side_summary: pd.DataFram
     for yi, value in zip(y, pivot["population_2020"] / 1e6):
         ax.text(value + max(pivot["population_2020"] / 1e6) * 0.012, yi, f"{value:.1f}", va="center", fontsize=6.2)
     fig.subplots_adjust(left=0.39, right=0.96, top=0.88, bottom=0.14)
-    extended_path = FIG_DIR / "extended_data_fig7_population_exposure_footprints.png"
+    extended_path = FIG_DIR / "si_fig_s8_population_exposure_footprints.png"
     fig.set_size_inches(1814 / 300, 1400 / 300)
     fig.savefig(extended_path, dpi=300, facecolor="white")
     plt.close(fig)

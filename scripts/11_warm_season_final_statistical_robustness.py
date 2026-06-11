@@ -17,7 +17,7 @@ if str(REPO_ROOT / "src") not in sys.path:
 
 from urban_hot_night_sync.paths import WARM_SEASON_INPUT_ROOT
 
-SCRIPT04 = REPO_ROOT / "scripts/04_warm_season_reviewer_outputs.py"
+SCRIPT04 = REPO_ROOT / "scripts/04_build_primary_warm_season_outputs.py"
 SCRIPT09 = REPO_ROOT / "scripts/09_warm_season_network_parameter_sensitivity.py"
 DEFAULT_INPUT_ROOT = WARM_SEASON_INPUT_ROOT
 DEFAULT_DERIVED_ROOT = REPO_ROOT / "data/derived/warm_season_final_statistical_robustness"
@@ -34,7 +34,7 @@ def import_module(path: Path, name: str):
     return module
 
 
-reviewer_outputs = import_module(SCRIPT04, "warm_season_reviewer_outputs")
+primary_outputs = import_module(SCRIPT04, "warm_season_primary_outputs")
 parameter_sensitivity = import_module(SCRIPT09, "warm_season_parameter_sensitivity")
 
 
@@ -209,7 +209,7 @@ def run_matching_sensitivity(
         setting_dir = output_root / safe_setting(setting["setting"])
         setting_dir.mkdir(parents=True, exist_ok=True)
         print(f"Matched amplification for {setting['setting']}")
-        summary, raw = reviewer_outputs.run_matched_amplification(
+        summary, raw = primary_outputs.run_matched_amplification(
             coherent_edges_path=coherent_path,
             dipole_edges_path=dipole_path,
             hot_events_path=hot_events,

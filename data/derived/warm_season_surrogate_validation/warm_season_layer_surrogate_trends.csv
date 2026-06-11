@@ -1,0 +1,3 @@
+mechanism,observed_total_bundle_days_recomputed,total_observed,total_surrogate_mean,total_surrogate_p95,total_surrogate_p99,total_empirical_p_greater,observed_slope,observed_kendall_p,surrogate_slope_mean,surrogate_slope_p95,surrogate_slope_p99,slope_empirical_p_greater
+Coherent,281.0,281.0,463.792,485.0,495.0,1.0,0.8,4.170804515831381e-05,0.25660806361680977,0.41428571428571426,0.4807948717948718,0.000999000999000999
+Dipole,106.0,106.0,0.978,3.0,4.0,0.000999000999000999,0.2638888888888889,0.0005215059932002158,0.0,0.0,0.0,0.000999000999000999

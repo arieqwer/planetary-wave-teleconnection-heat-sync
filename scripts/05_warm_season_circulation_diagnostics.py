@@ -58,6 +58,8 @@ def composite_waves(
     dates: pd.Series,
     target_lat: float,
     ncep_cache_root: Path,
+    min_wavenumber: int = 4,
+    max_wavenumber: int = 8,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, int]:
     t0_values: list[np.ndarray] = []
     early_values: list[np.ndarray] = []
@@ -87,18 +89,30 @@ def composite_waves(
         raise RuntimeError(f"No valid Z500 windows found for target latitude {target_lat:g}.")
 
     return (
-        fourier_filter(np.nanmean(t0_values, axis=0)),
-        fourier_filter(np.nanmean(early_values, axis=0)),
-        fourier_filter(np.nanmean(late_values, axis=0)),
+        fourier_filter(np.nanmean(t0_values, axis=0), min_wavenumber, max_wavenumber),
+        fourier_filter(np.nanmean(early_values, axis=0), min_wavenumber, max_wavenumber),
+        fourier_filter(np.nanmean(late_values, axis=0), min_wavenumber, max_wavenumber),
         len(t0_values),
     )
 
 
-def diagnostics_for_bundle(row: pd.Series, bundle_dir: Path, ncep_cache_root: Path) -> dict[str, object]:
+def diagnostics_for_bundle(
+    row: pd.Series,
+    bundle_dir: Path,
+    ncep_cache_root: Path,
+    min_wavenumber: int = 4,
+    max_wavenumber: int = 8,
+) -> dict[str, object]:
     date_file = bundle_dir / row["date_file"]
     dates = pd.read_csv(date_file)["date"]
     target_lat = float(np.nanmean([row["centroid_a_lat"], row["centroid_b_lat"]]))
-    wave_t0, wave_early, wave_late, n_events = composite_waves(dates, target_lat, ncep_cache_root)
+    wave_t0, wave_early, wave_late, n_events = composite_waves(
+        dates,
+        target_lat,
+        ncep_cache_root,
+        min_wavenumber=min_wavenumber,
+        max_wavenumber=max_wavenumber,
+    )
     lons = longitudes(len(wave_t0))
 
     lon_a = lon_360(float(row["centroid_a_lon"]))
@@ -129,7 +143,36 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Compute warm-season Z500 wave diagnostics for extracted bundles.")
     parser.add_argument("--output-root", type=Path, default=DERIVED_ROOT / "warm_season_local_warm3")
     parser.add_argument("--ncep-cache-root", type=Path, default=NCEP_ROOT)
+    parser.add_argument(
+        "--write-band-sensitivity",
+        action="store_true",
+        help="Also write adjacent zonal-wavenumber band sensitivity diagnostics.",
+    )
+    parser.add_argument(
+        "--sensitivity-bands",
+        default="3-8,4-8,4-9,3-9",
+        help="Comma-separated min-max zonal-wavenumber bands for --write-band-sensitivity.",
+    )
     return parser.parse_args()
+
+
+def parse_bands(value: str) -> list[tuple[int, int]]:
+    bands: list[tuple[int, int]] = []
+    for item in value.split(","):
+        item = item.strip()
+        if not item:
+            continue
+        try:
+            lo_str, hi_str = item.split("-", 1)
+            lo, hi = int(lo_str), int(hi_str)
+        except ValueError as exc:
+            raise ValueError(f"Invalid wavenumber band {item!r}; use min-max, for example 3-8.") from exc
+        if lo < 0 or hi < lo:
+            raise ValueError(f"Invalid wavenumber band {item!r}; require 0 <= min <= max.")
+        bands.append((lo, hi))
+    if not bands:
+        raise ValueError("At least one sensitivity band is required.")
+    return bands
 
 
 def main() -> None:
@@ -146,6 +189,29 @@ def main() -> None:
     output_path = args.output_root / "warm_season_z500_wave_diagnostics.csv"
     pd.DataFrame(rows).to_csv(output_path, index=False)
     print(f"Wrote warm-season Z500 diagnostics to: {output_path}")
+
+    if args.write_band_sensitivity:
+        sensitivity_rows: list[dict[str, object]] = []
+        for min_wavenumber, max_wavenumber in parse_bands(args.sensitivity_bands):
+            for _, row in summary.iterrows():
+                diagnostic = diagnostics_for_bundle(
+                    row,
+                    bundle_dir,
+                    args.ncep_cache_root,
+                    min_wavenumber=min_wavenumber,
+                    max_wavenumber=max_wavenumber,
+                )
+                diagnostic.update(
+                    {
+                        "band": f"{min_wavenumber}-{max_wavenumber}",
+                        "min_wavenumber": min_wavenumber,
+                        "max_wavenumber": max_wavenumber,
+                    }
+                )
+                sensitivity_rows.append(diagnostic)
+        sensitivity_output = args.output_root / "warm_season_z500_wavenumber_band_sensitivity.csv"
+        pd.DataFrame(sensitivity_rows).to_csv(sensitivity_output, index=False)
+        print(f"Wrote warm-season Z500 wavenumber-band sensitivity to: {sensitivity_output}")
 
 
 if __name__ == "__main__":

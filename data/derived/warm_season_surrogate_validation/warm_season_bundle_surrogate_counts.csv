@@ -1,0 +1,7 @@
+mechanism,rank,manuscript_date_count,observed_date_count_recomputed,observed,surrogate_mean,surrogate_p95,surrogate_p99,empirical_p_greater
+Coherent,1,114,114,114.0,174.109,189.04999999999995,195.0,1.0
+Coherent,2,101,101,101.0,173.54,185.0,189.0,1.0
+Coherent,3,66,66,66.0,116.143,127.04999999999995,132.0,1.0
+Dipole,1,46,46,46.0,0.64,2.0,3.0,0.000999000999000999
+Dipole,2,26,26,26.0,0.27,1.0,2.0,0.000999000999000999
+Dipole,3,34,34,34.0,0.068,1.0,1.0,0.000999000999000999

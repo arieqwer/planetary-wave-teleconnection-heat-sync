@@ -1,98 +1,59 @@
 # Urban Hot Night Synchrony
 
-This repository is the trimmed public code-and-data release for the manuscript on synchronized warm-season nocturnal urban heat extremes and planetary-wave locking. It keeps only the integrated workflow scripts, lightweight derived outputs, and manuscript-support files that are suitable for GitHub.
+Code and lightweight derived data for the manuscript **Atmospheric circulation synchronizes urban hot nights across distant regions**.
 
-The previous notebook-heavy working directory was intentionally reduced. The release excludes figure-by-figure notebooks, local-versus-Colab duplicates, exploratory drafting scripts, and stale year-round outputs that no longer support the corrected warm-season manuscript.
+This repository is designed as a compact reproducibility package. It contains the integrated scripts and compact manuscript outputs needed to audit the warm-season event-network, circulation, intensity, trend, population-exposure, and robustness results. Large public source datasets are not committed to GitHub; their provenance and expected local layout are described in `data/external/README.md`.
 
-## Manuscript framing
+## What Is Included
 
-The corrected analysis uses each node's local warm season, defined as the warmest three calendar months during the 2001-2020 baseline. The network layers use the manuscript terminology:
+- Primary warm-season event-network summaries for the coherent shared-hot-night layer and the dipole hot-cool-contrast layer.
+- Bundle dates, trend summaries, matched-intensity summaries, Z500 diagnostics, population-footprint exposure tables, and figure-support files.
+- Sensitivity outputs for warm-season definition, event-duration threshold, ECA lag window, raw pairwise p-value threshold, urban-footprint denominators, stable urban core, timing-randomized surrogates, and adjacent Z500 wavenumber bands.
+- A validation script that checks the public manifest, key manuscript numbers, robustness outputs, and absence of local absolute paths.
 
-- `Coherent`: hot-night event coincidence at both endpoints.
-- `Dipole`: hot-night event coincidence at one endpoint with cool-anomaly coincidence at the other endpoint.
+## Quick Validation
 
-Some archived source filenames retain the historical token `SEESAW` for provenance. In the manuscript and release documentation, those files support the `Dipole` network layer.
-
-## Core workflow
-
-Run scripts from the repository root. Heavy inputs are expected outside GitHub; see `data/external/README.md`.
-
-1. `scripts/01_build_city_panel.py`
-   Builds the yearly GAIA urban-activity panel and union-node table from yearly `GAIA_frac_025_<year>.parquet` inputs.
-2. `scripts/02_build_event_tables.py`
-   Builds hot-night and cool-anomaly daily event tables from yearly ERA5 hourly parquet inputs. Use `--season-mode local-warm3` for the corrected manuscript analysis.
-3. `scripts/03_build_synchrony_networks.py`
-   Builds the Coherent and Dipole event-coincidence networks from the event tables.
-4. `scripts/04_warm_season_reviewer_outputs.py`
-   Rebuilds the corrected warm-season bundle dates, trend summaries, raw-lock summaries, and matched-amplification summaries.
-5. `scripts/05_warm_season_circulation_diagnostics.py`
-   Computes lightweight Z500 wave diagnostics for the corrected warm-season bundles from cached NCEP daily geopotential-height files.
-6. `scripts/06_warm_season_population_exposure.py`
-   Recomputes 2020 WorldPop footprint populations and static person-night exposure for corrected warm-season Coherent and Dipole bundles.
-7. `scripts/07_warm_season_edge_screen_diagnostic.py`
-   Recomputes the Benjamini-Hochberg FDR diagnostic for the pairwise ECA candidate-edge screen.
-8. `scripts/08_warm_season_definition_sensitivity.py`
-   Rebuilds local-warmest-4-month and local-warmest-6-month sensitivity summaries.
-9. `scripts/09_warm_season_network_parameter_sensitivity.py`
-   Recomputes network summaries under alternate ECA lag windows, p-value screens, and sustained-event durations.
-10. `scripts/10_warm_season_bundle_geography_sensitivity.py`
-    Reclusters long-range edges under alternate ECA settings and compares dominant bundle centroids with the primary corrected bundles.
-11. `scripts/11_warm_season_final_statistical_robustness.py`
-    Rebuilds alternate edge sets, matched-amplification diagnostics, and top-bundle trend diagnostics for the final robustness audit.
-
-## Reproducibility checks
-
-Run this lightweight validation before submission or repository release:
+From the repository root:
 
 ```bash
+python3 -m pip install -r requirements.txt
 python3 scripts/12_validate_release_package.py
 ```
 
-The check verifies that the manifest matches the public data files, stale year-round outputs are absent, key corrected manuscript numbers are reproducible from the CSV outputs, and release files do not expose local absolute paths.
+The validation should end with:
 
-## GitHub data package
-
-The exact public data files are listed in `data/GITHUB_DATA_FILES.txt`. The package includes:
-
-- corrected warm-season top-three Coherent and Dipole bundle-date CSVs
-- corrected warm-season bundle, trend, raw-lock, Z500, matched-amplification, and FDR summaries
-- corrected warm-season population-footprint and exposure summaries
-- warm-season definition, network-parameter, bundle-geography, and statistical-robustness sensitivity outputs
-- compact robustness summaries plus small edge-list Parquet files retained to support independent checking
-
-The complete public data package is intentionally lightweight. At the time of packaging, `data/derived/` is about 16 MB and contains no single file larger than GitHub's recommended practical limits.
-
-## Figure and table map
-
-- Main network/event summaries: `data/derived/warm_season_local_warm3/warm_season_bundle_summary.csv`, `warm_season_raw_lock_summary.csv`, and `warm_season_trend_summary.csv`.
-- Matched amplification results: `data/derived/warm_season_local_warm3/warm_season_matched_amplification_summary.csv`.
-- Z500 diagnostics: `data/derived/warm_season_local_warm3/warm_season_z500_wave_diagnostics.csv`.
-- Population/exposure results: `data/derived/warm_season_local_warm3/population_exposure/`.
-- Robustness tables: `data/derived/warm_season_definition_sensitivity/`, `data/derived/warm_season_parameter_sensitivity/`, `data/derived/warm_season_bundle_geography_sensitivity/`, and `data/derived/warm_season_final_statistical_robustness/`.
-- Generated exposure figure panels retained in this repository: `figures/warm_season_exposure/`.
-
-## Repository layout
-
-- `scripts/`: integrated workflow and validation scripts
-- `src/urban_hot_night_sync/`: repository-relative path helpers
-- `data/derived/`: lightweight manuscript outputs kept on GitHub
-- `data/external/`: placeholder and provenance notes for large external inputs
-- `figures/`: lightweight generated exposure panels retained for manuscript traceability
-
-## Environment
-
-Create a Python environment from `requirements.txt`, then point the workflow to archived inputs with environment variables as needed:
-
-```bash
-export UHN_SYNC_EXTERNAL_ROOT=/path/to/external/archive
-export UHN_SYNC_WARM_SEASON_INPUT_ROOT=$UHN_SYNC_EXTERNAL_ROOT/warm_season_local_warm3
-export UHN_SYNC_NCEP_ROOT=$UHN_SYNC_EXTERNAL_ROOT/ncep
+```text
+Release validation passed.
 ```
 
-For Earth Engine population exposure, also set `EE_PROJECT` if your project differs from the default used during analysis.
+## Core Workflow
 
-## Notes
+The complete workflow is ordered below. Scripts accept command-line arguments or environment variables for non-GitHub input locations.
 
-- The GitHub release is narrower than the private working directory by design.
-- Raw GAIA, ERA5, NCEP and WorldPop products should be cited and accessed from their public providers or from a separate data archive, not committed directly to GitHub.
-- The repository supports reproducibility of the corrected warm-season manuscript outputs; it is not a full mirror of every exploratory step used during manuscript development.
+1. `scripts/01_build_city_panel.py` builds yearly GAIA urban-activity panels and union-node tables.
+2. `scripts/02_build_event_tables.py` builds daily hot-night and cool-anomaly event tables from ERA5-Land inputs.
+3. `scripts/03_build_synchrony_networks.py` builds coherent and dipole event-coincidence networks.
+4. `scripts/04_build_primary_warm_season_outputs.py` rebuilds primary bundle dates, trend summaries, raw-lock summaries, and matched-amplification summaries.
+5. `scripts/05_warm_season_circulation_diagnostics.py` computes Z500 wave diagnostics and optional adjacent-band sensitivity outputs.
+6. `scripts/06_warm_season_population_exposure.py` recomputes WorldPop footprint populations and static person-night exposure.
+7. `scripts/07_warm_season_edge_screen_diagnostic.py` recomputes the Benjamini-Hochberg FDR diagnostic for the ECA edge screen.
+8. `scripts/08_warm_season_definition_sensitivity.py` rebuilds local-warmest-4-month and local-warmest-6-month sensitivity summaries.
+9. `scripts/09_warm_season_network_parameter_sensitivity.py` recomputes network summaries under alternative ECA settings.
+10. `scripts/10_warm_season_bundle_geography_sensitivity.py` tests dominant-bundle geography under alternative ECA settings.
+11. `scripts/11_warm_season_final_statistical_robustness.py` rebuilds compact matched-intensity and trend robustness outputs.
+12. `scripts/13_warm_season_active_denominator_trend.py` evaluates annual active-denominator and stable-urban-core trend checks.
+13. `scripts/14_warm_season_bundle_surrogate_validation.py` runs the node-year circular-shift surrogate diagnostic.
+
+## Repository Layout
+
+- `scripts/`: ordered processing, diagnostic, and validation scripts.
+- `src/urban_hot_night_sync/`: repository-relative path helpers.
+- `data/derived/`: lightweight CSV and Parquet outputs used by the manuscript and Supporting Information.
+- `data/GITHUB_DATA_FILES.txt`: manifest of all public derived-data files.
+- `data/external/README.md`: public source-data provenance and expected external-input layout.
+- `figures/warm_season_exposure/`: lightweight exposure figure panels retained for traceability.
+- `MANUSCRIPT_OUTPUT_MAP.md`: concise map from manuscript/SI items to repository files.
+
+## Data Policy Note
+
+For initial peer review, this GitHub repository provides code and lightweight derived outputs for auditability. Before publication, the repository or a release snapshot should be archived in a DOI-minting repository such as Zenodo, Figshare, OSF, or an institutional archive, and the manuscript Open Research statement should be updated with that DOI.

@@ -449,7 +449,8 @@ def paired_summary(runs: pd.DataFrame, pairs: pd.DataFrame, n_boot: int, seed: i
     control = indexed.loc[pairs["control_uid"], "intensity_mean"].to_numpy(dtype=float)
     deltas = locked - control
     lo, hi = bootstrap_mean_ci(deltas, n_boot=n_boot, seed=seed)
-    p_value = float(wilcoxon(deltas, alternative="greater").pvalue) if np.any(deltas != 0) else np.nan
+    p_value_greater = float(wilcoxon(deltas, alternative="greater").pvalue) if np.any(deltas != 0) else np.nan
+    p_value_two_sided = float(wilcoxon(deltas, alternative="two-sided").pvalue) if np.any(deltas != 0) else np.nan
     details = pairs.copy()
     details["locked_intensity_mean"] = locked
     details["control_intensity_mean"] = control
@@ -460,7 +461,8 @@ def paired_summary(runs: pd.DataFrame, pairs: pd.DataFrame, n_boot: int, seed: i
         "median_delta": float(np.median(deltas)),
         "boot95_mean_lo": lo,
         "boot95_mean_hi": hi,
-        "wilcoxon_p_greater": p_value,
+        "wilcoxon_p_greater": p_value_greater,
+        "wilcoxon_p_two_sided": p_value_two_sided,
     }, details
 
 
@@ -554,7 +556,7 @@ def run_matched_amplification(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Build warm-season bundle dates, trends, and matched amplification outputs for reviewer revision."
+        description="Build primary warm-season bundle dates, trends, and matched-amplification outputs for the manuscript."
     )
     parser.add_argument("--input-root", type=Path, default=WARM_SEASON_INPUT_ROOT)
     parser.add_argument("--repo-output-root", type=Path, default=DERIVED_ROOT / "warm_season_local_warm3")
@@ -640,7 +642,7 @@ def main() -> None:
         matched_summary.to_csv(args.repo_output_root / "warm_season_matched_amplification_summary.csv", index=False)
         raw_summary.to_csv(args.repo_output_root / "warm_season_raw_lock_summary.csv", index=False)
 
-    print(f"Wrote warm-season reviewer outputs to: {args.repo_output_root}")
+    print(f"Wrote primary warm-season manuscript outputs to: {args.repo_output_root}")
 
 
 if __name__ == "__main__":

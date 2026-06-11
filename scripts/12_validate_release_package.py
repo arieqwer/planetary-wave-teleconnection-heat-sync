@@ -91,6 +91,8 @@ def validate_primary_numbers() -> None:
     assert_close(trend_by_layer.loc["Dipole", "total_bundle_days"], 106, 1e-9, "Dipole total bundle days")
 
     matched = read_csv("data/derived/warm_season_local_warm3/warm_season_matched_amplification_summary.csv")
+    if "wilcoxon_p_two_sided" not in matched.columns:
+        fail("Matched amplification summary is missing two-sided Wilcoxon diagnostics")
     matched_by_key = matched.set_index(["mechanism", "edge_set"])
     expected_matched = {
         ("Coherent", "all_edges"): 0.232185,
@@ -143,9 +145,20 @@ def validate_population_and_diagnostics() -> None:
     if len(z500) != 6:
         fail(f"Expected 6 Z500 diagnostic rows, found {len(z500)}")
 
+    z500_band = read_csv("data/derived/warm_season_local_warm3/warm_season_z500_wavenumber_band_sensitivity.csv")
+    expected_bands = {"3-8", "4-8", "4-9", "3-9"}
+    if set(z500_band["band"]) != expected_bands:
+        fail(f"Unexpected Z500 sensitivity bands: {sorted(z500_band['band'].unique())}")
+    if len(z500_band) != 6 * len(expected_bands):
+        fail(f"Expected {6 * len(expected_bands)} Z500 sensitivity rows, found {len(z500_band)}")
+    if (z500_band["abs_delta_z_m"] >= 45).any():
+        fail("Adjacent-band Z500 sensitivity should keep all top bundles below the 45 m diagnostic threshold")
+
 
 def validate_robustness_files() -> None:
     required = [
+        "data/derived/warm_season_active_denominator_trend/active_denominator_trend_summary.csv",
+        "data/derived/warm_season_active_denominator_trend/active_denominator_annual_by_layer.csv",
         "data/derived/warm_season_definition_sensitivity/warm_season_definition_network_sensitivity.csv",
         "data/derived/warm_season_parameter_sensitivity/warm_season_network_parameter_sensitivity.csv",
         "data/derived/warm_season_bundle_geography_sensitivity/warm_season_bundle_geography_sensitivity_summary.csv",
@@ -156,6 +169,68 @@ def validate_robustness_files() -> None:
         frame = read_csv(relative_path)
         if frame.empty:
             fail(f"Required robustness file is empty: {relative_path}")
+
+    active = read_csv("data/derived/warm_season_active_denominator_trend/active_denominator_trend_summary.csv")
+    active_by_key = active.set_index(["scenario", "mechanism"])
+    assert_close(
+        active_by_key.loc[("fixed_denominator_recomputed", "Coherent"), "max_abs_diff_from_original_annual_days"],
+        0,
+        1e-9,
+        "Coherent active-denominator fixed recomputation",
+    )
+    assert_close(
+        active_by_key.loc[("fixed_denominator_recomputed", "Dipole"), "max_abs_diff_from_original_annual_days"],
+        0,
+        1e-9,
+        "Dipole active-denominator fixed recomputation",
+    )
+    assert_close(
+        active_by_key.loc[("annual_urban_active_denominator", "Coherent"), "theil_sen_slope_per_year"],
+        0.7100840336,
+        1e-9,
+        "Coherent annual-urban-active denominator slope",
+    )
+    assert_close(
+        active_by_key.loc[("annual_urban_active_denominator", "Dipole"), "kendall_p"],
+        0.1970341861,
+        1e-6,
+        "Dipole annual-urban-active denominator Kendall p",
+    )
+    assert_close(
+        active_by_key.loc[("stable_urban_core_fixed_denominator", "Dipole"), "theil_sen_slope_per_year"],
+        0.0,
+        1e-9,
+        "Dipole stable-core fixed-denominator slope",
+    )
+
+    surrogate = read_csv("data/derived/warm_season_surrogate_validation/warm_season_layer_surrogate_trends.csv")
+    surrogate_by_layer = surrogate.set_index("mechanism")
+    assert_close(
+        surrogate_by_layer.loc["Coherent", "observed_slope"],
+        0.8,
+        1e-9,
+        "Coherent surrogate observed slope",
+    )
+    if not (
+        surrogate_by_layer.loc["Coherent", "observed_slope"]
+        > surrogate_by_layer.loc["Coherent", "surrogate_slope_p99"]
+    ):
+        fail("Coherent observed slope should exceed the surrogate 99th percentile")
+    if not (
+        surrogate_by_layer.loc["Coherent", "observed_total_bundle_days_recomputed"]
+        < surrogate_by_layer.loc["Coherent", "total_surrogate_mean"]
+    ):
+        fail("Coherent raw bundle-day total is expected to be below the side-threshold surrogate mean")
+    if not (
+        surrogate_by_layer.loc["Dipole", "observed_total_bundle_days_recomputed"]
+        > surrogate_by_layer.loc["Dipole", "total_surrogate_p99"]
+    ):
+        fail("Dipole observed total bundle-days should exceed the surrogate 99th percentile")
+    if not (
+        surrogate_by_layer.loc["Dipole", "observed_slope"]
+        > surrogate_by_layer.loc["Dipole", "surrogate_slope_p99"]
+    ):
+        fail("Dipole observed slope should exceed the surrogate 99th percentile")
 
 
 def validate_no_local_paths() -> None:

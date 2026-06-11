@@ -51,4 +51,4 @@ The filename `ECA_edges_SEESAW...` is retained only for continuity with the orig
 
 ## Archiving recommendation
 
-For journal submission, archive non-GitHub files in Zenodo, Figshare, OSF, or an institutional repository, then cite that archive in the Data Availability and Code Availability statements. GitHub should contain only the scripts and lightweight derived outputs listed in `data/GITHUB_DATA_FILES.txt`.
+For initial peer review, this GitHub repository contains the scripts and lightweight derived outputs listed in `data/GITHUB_DATA_FILES.txt`, while large source products should be accessed from their public providers. Before publication, archive a repository snapshot or expanded data package in Zenodo, Figshare, OSF, or an institutional repository and cite the DOI in the Open Research statement.

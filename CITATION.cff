@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this code or derived-data package, please cite the manuscript and this repository."
+title: "Code and derived data for Atmospheric circulation synchronizes urban hot nights across distant regions"
+authors:
+  - family-names: Li
+    given-names: Shiyu
+  - family-names: Jin
+    given-names: Shuanggen
+type: software
+repository-code: "https://github.com/arieqwer/planetary-wave-teleconnection-heat-sync"
+license: MIT
+keywords:
+  - urban heat
+  - nocturnal heat
+  - event coincidence analysis
+  - atmospheric circulation
+  - climate impacts
