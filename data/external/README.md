@@ -48,7 +48,3 @@ The filename `ECA_edges_SEESAW...` is retained only for continuity with the orig
 - `UHN_SYNC_NCEP_ROOT`: directory containing `hgt.<year>.nc` files.
 - `UHN_SYNC_WARM_SEASON_WORK_ROOT`: scratch/work directory for sensitivity outputs that are too large or too temporary for GitHub.
 - `UHN_SYNC_SOURCE_EVENT_ROOT`: directory containing all-season source event tables if rebuilding local-warm4/local-warm6 sensitivity products.
-
-## Archiving recommendation
-
-For initial peer review, this GitHub repository contains the scripts and lightweight derived outputs listed in `data/GITHUB_DATA_FILES.txt`, while large source products should be accessed from their public providers. Before publication, archive a repository snapshot or expanded data package in Zenodo, Figshare, OSF, or an institutional repository and cite the DOI in the Open Research statement.
