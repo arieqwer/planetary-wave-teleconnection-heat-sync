@@ -1,6 +1,6 @@
 # Urban Hot Night Synchrony
 
-Code and lightweight derived data for the manuscript **Atmospheric circulation synchronizes urban hot nights across distant regions**.
+Code and lightweight derived data for the manuscript **Atmospheric Circulation Synchronizes Urban Heat Exposure across Distant Regions**.
 
 This repository is designed as a compact reproducibility package. It contains the integrated scripts and compact manuscript outputs needed to audit the warm-season event-network, circulation, intensity, trend, population-exposure, and robustness results. Large public source datasets are not committed to GitHub; their provenance and expected local layout are described in `data/external/README.md`.
 
