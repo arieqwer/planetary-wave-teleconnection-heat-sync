@@ -48,7 +48,7 @@ The complete workflow is ordered below. Scripts accept command-line arguments or
 - `src/urban_hot_night_sync/`: repository-relative path helpers.
 - `data/derived/`: lightweight CSV and Parquet outputs used by the manuscript and Supporting Information.
 - `data/GITHUB_DATA_FILES.txt`: manifest of all public derived-data files.
-- `data/external/README.md`: public source-data provenance and expected external-input layout.
+- `data/external/README.md`: public source-data list.
 - `figures/warm_season_exposure/`: lightweight exposure figure panels retained for traceability.
 - `MANUSCRIPT_OUTPUT_MAP.md`: concise map from manuscript/SI items to repository files.
 
