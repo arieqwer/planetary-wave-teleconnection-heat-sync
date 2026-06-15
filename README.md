@@ -56,4 +56,4 @@ The complete workflow is ordered below. Scripts accept command-line arguments or
 
 ## Data Policy Note
 
-For initial peer review, this GitHub repository provides code and lightweight derived outputs for auditability. Before publication, the repository or a release snapshot should be archived in a DOI-minting repository such as Zenodo, Figshare, OSF, or an institutional archive, and the manuscript Open Research statement should be updated with that DOI.
+For initial peer review, this GitHub repository provides code and lightweight derived outputs for auditability. Before publication, the repository will be archived in Zenodo with DOI.
